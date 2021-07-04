@@ -7,7 +7,7 @@ study_flask
 flask_study/myproject
 
 # command
-export FLASK_APP=pybo
+export FLASK_APP=pybo \n
 export FLASK_ENV=development
 
 # recommand

@@ -11,4 +11,4 @@ def hello_pybo():
 
 @bp.route('/')
 def index():
-    return redirect(url_for('question._list'))
+    return redirect(url_for('question._list')) # 메인페이지를 question list로 리다이렉트
