@@ -17,7 +17,7 @@
         {% if question_list %} <!--render template함수에서 전달받은 question list 가 비었는지? -->
         {% for question in question_list.items %} <!-- item 갯수만큼만 가져옴-->
         <tr>
-            <td>{{ loop.index }}</td>
+            <td>{{ question_list.total - ((question_list.page-1) * question_list.per_page) - loop.index0 }}</td>
             <td>
                 <a href="{{ url_for('question.detail', question_id=question.id) }}">{{ question.subject }}</a><!-- 질문을 누르면 질문 상세 페이지로 이동 url for 을 이용하면 편해짐-->
             </td>
