@@ -11,9 +11,19 @@
     <title>Hello, pybo!</title>
 </head>
 <body>
+
+<!-- 네비게이션 바 추가-->
+{% include "navbar.html" %}
+
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
 {% block content %}
 {% endblock %}
+
+<!-- jQuery JS -->
+<script src="{{ url_for('static', filename='jquery-3.6.0.min.js') }}"></script>
+<!-- Bootstrap JS -->
+<script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+
 <!-- 기본 템플릿 안에 삽입될 내용 End -->
 </body>
 </html>

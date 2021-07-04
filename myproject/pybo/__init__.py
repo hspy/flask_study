@@ -25,4 +25,7 @@ def create_app():
     app.register_blueprint(question_views.bp) #question view
     app.register_blueprint(answer_views.bp) #answer view
 
+    from .filter import format_datetime #템플릿 필터
+    app.jinja_env.filters['datetime'] = format_datetime 
+ 
     return app

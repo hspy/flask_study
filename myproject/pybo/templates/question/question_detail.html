@@ -14,7 +14,7 @@
             <div class="card-text" style="white-space: pre-line;">{{ question.content }}</div>
             <div class="d-flex justify-content-end">
                 <div class="badge badge-light p-2">
-                    {{ question.create_date }}
+                    <td>{{ question.create_date|datetime }}</td>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
             <div class="card-text" style="white-space: pre-line;">{{ answer.content }}</div>
             <div class="d-flex justify-content-end">
                 <div class="badge badge-light p-2">
-                    {{ answer.create_date }}
+                    <td>{{ question.create_date|datetime }}</td>
                 </div>
             </div>
         </div>
