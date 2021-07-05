@@ -3,11 +3,12 @@
 ## reference book
 https://wikidocs.net/book/4542
 
-## env dir
+## workspace
 flask_study/myproject
 
 ## command
 export FLASK_APP=pybo
+
 export FLASK_ENV=development
 
 ## recommand to set at bashrc

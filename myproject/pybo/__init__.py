@@ -20,10 +20,11 @@ def create_app():
     from . import models
 
     # blueprint
-    from .views import main_views, question_views, answer_views
+    from .views import main_views, question_views, answer_views, auth_views
     app.register_blueprint(main_views.bp) #views
     app.register_blueprint(question_views.bp) #question view
     app.register_blueprint(answer_views.bp) #answer view
+    app.register_blueprint(auth_views.bp)
 
     from .filter import format_datetime #템플릿 필터
     app.jinja_env.filters['datetime'] = format_datetime 
