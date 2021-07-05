@@ -20,6 +20,9 @@
             <td>{{ question_list.total - ((question_list.page-1) * question_list.per_page) - loop.index0 }}</td>
             <td>
                 <a href="{{ url_for('question.detail', question_id=question.id) }}">{{ question.subject }}</a><!-- 질문을 누르면 질문 상세 페이지로 이동 url for 을 이용하면 편해짐-->
+                {% if question.answer_set|length > 0 %}
+                <span class="text-danger small ml-2">{{ question.answer_set|length }}</span> <!--답변 갯수 표시! 답변이 있을 경우에 표시함-->
+                {% endif %}
             </td>
             <td>{{ question.create_date|datetime }}</td>
         </tr>
