@@ -1,15 +1,14 @@
-## flask_study
+# flask_study
 
-# reference book
+## reference book
 https://wikidocs.net/book/4542
 
-# env dir
+## env dir
 flask_study/myproject
 
-# command
+## command
 export FLASK_APP=pybo
-
 export FLASK_ENV=development
 
-# recommand to set at bashrc
+## recommand to set at bashrc
 alias flask_venv="source $HOME/flask_study/venvs/myproject/bin/activate"
