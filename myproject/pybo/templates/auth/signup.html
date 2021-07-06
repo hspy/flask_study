@@ -3,7 +3,7 @@
 <div class="container my-3">
     <form method="post" class="post-form">
         {{ form.csrf_token }}
-        {% include "form_errors.html" %}
+        {% include "form_errors.html" %}<!--에러가 발생했을 때-->
         <div class="form-group">
             <label for="username">사용자 이름</label>
             <input type="text" class="form-control" name="username" id="username"

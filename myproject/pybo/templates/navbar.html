@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
-        {% if g.user %}
+        {% if g.user %} <!--로그인 된 상태일때-->
         <ul class="navbar-nav">
             <li class="nav-item ">
                 <a class="nav-link" href="{{ url_for('auth.logout') }}">{{ g.user.username }} (로그아웃)</a>

@@ -1,11 +1,13 @@
 from datetime import datetime
 
-from flask import Blueprint, render_template, request, url_for
+from flask import Blueprint, render_template, request, url_for, g
 from werkzeug.utils import redirect
 
 from .. import db
 from ..forms import QuestionForm, AnswerForm
 from ..models import Question
+
+from pybo.views.auth_views import login_required
 
 bp = Blueprint('question', __name__, url_prefix='/question')
 
@@ -28,10 +30,12 @@ def detail(question_id):
 
 
 @bp.route('/create/', methods=('GET', 'POST')) #질문 폼 생성, 메소드는 GET과 POST
+@login_required # 로그인이 되어있는지 애너테이션을 통해 확인
 def create():
     form = QuestionForm()
     if request.method == 'POST' and form.validate_on_submit():
-        question = Question(subject=form.subject.data, content=form.content.data, create_date=datetime.now())
+        question = Question(subject=form.subject.data, content=form.content.data,
+                            create_date=datetime.now(), user=g.user) #유저 아이디 추가
         db.session.add(question)
         db.session.commit()
         return redirect(url_for('main.index'))

@@ -13,8 +13,9 @@
         <div class="card-body">
             <div class="card-text" style="white-space: pre-line;">{{ question.content }}</div>
             <div class="d-flex justify-content-end">
-                <div class="badge badge-light p-2">
-                    <td>{{ question.create_date|datetime }}</td>
+                <div class="badge badge-light p-2 text-left">
+                    <div class="mb-2">{{ question.user.username }}</div>
+                    <div>{{ question.create_date|datetime }}</div>
                 </div>
             </div>
         </div>
@@ -27,8 +28,9 @@
         <div class="card-body">
             <div class="card-text" style="white-space: pre-line;">{{ answer.content }}</div>
             <div class="d-flex justify-content-end">
-                <div class="badge badge-light p-2">
-                    <td>{{ question.create_date|datetime }}</td>
+                <div class="badge badge-light p-2 text-left">
+                    <div class="mb-2">{{ answer.user.username }}</div>
+                    <div>{{ answer.create_date|datetime }}</div>
                 </div>
             </div>
         </div>
@@ -47,7 +49,8 @@
     <!------------------------------- 답변 저장을 위한 form, textarea, input 엘리먼트 추가---------------------------------->
     <form action="{{ url_for('answer.create', question_id=question.id) }}" method="post" class="my-3"> <!--- 답변 저장 url, url_for 사용-->
         <div class="form-group">
-            <textarea name="content" id="content" class="form-control" rows="10"></textarea>
+            <textarea {% if not g.user %}disabled{% endif %}
+                    name="content" id="content" class="form-control" rows="10"></textarea> <!-- 로그인 되어있지 않다면 답변 등록 불가능-->
         </div>
         <input type="submit" value="답변등록" class="btn btn-primary">
     </form>

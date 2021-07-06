@@ -9,6 +9,6 @@ def hello_pybo():
     return 'Hello, Pybo!'
 
 
-@bp.route('/')
+@bp.route('/') #메인페이지가 질문 리스트로 리디렉션
 def index():
-    return redirect(url_for('question._list')) # 메인페이지를 question list로 리다이렉트
+    return redirect(url_for('question._list')) # 메인페이지를 question list로 리디렉트
