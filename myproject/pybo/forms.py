@@ -24,3 +24,6 @@ class UserCreateForm(FlaskForm): #아이디 생성
 class UserLoginForm(FlaskForm): #로그인 폼
     username = StringField('사용자이름', validators=[DataRequired(), Length(min=3, max=25)]) #로그인 아이디
     password = PasswordField('비밀번호', validators=[DataRequired()]) #비밀번호
+
+class CommentForm(FlaskForm):
+    content = TextAreaField('내용', validators=[DataRequired()])
