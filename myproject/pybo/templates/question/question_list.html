@@ -9,6 +9,7 @@
         <thead>
         <tr class="text-center thead-dark"></tr>
             <th>번호</th>
+            <th>추천</th>
             <th style="width:50%">제목</th> <!--제목은 전체 50%-->
             <th>글쓴이</th>
             <th>작성일시</th>
@@ -19,6 +20,11 @@
         {% for question in question_list.items %} <!-- item 갯수만큼만 가져옴-->
         <tr class="text-center">
             <td>{{ question_list.total - ((question_list.page-1) * question_list.per_page) - loop.index0 }}</td>
+            <td>
+                {% if question.voter|length > 0 %}
+                <span class="badge badge-warning px-2 py-1">{{ question.voter|length }}</span>
+                {% endif %}
+            </td>
             <td class="text-left">
                 <a href="{{ url_for('question.detail', question_id=question.id) }}">{{ question.subject }}</a><!-- 질문을 누르면 질문 상세 페이지로 이동 url for 을 이용하면 편해짐-->
                 {% if question.answer_set|length > 0 %}

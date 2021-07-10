@@ -22,7 +22,8 @@ def create(question_id):
         answer = Answer(content=content, create_date=datetime.now(), user=g.user) #답변 저장, 유저명 추가
         question.answer_set.append(answer)
         db.session.commit() #디비에 추가
-        return redirect(url_for('question.detail', question_id=question_id))
+        return redirect('{}#answer_{}'.format(
+            url_for('question.detail', question_id=question_id), answer.id))
     return render_template('question/question_detail.html', question=question, form=form)
 
 
@@ -32,14 +33,15 @@ def modify(answer_id):
     answer = Answer.query.get_or_404(answer_id)
     if g.user != answer.user:
         flash('수정권한이 없습니다')
-        return redirect(url_for('question.detail', question_id=answer.question.id))
+        return redirect(url_for('question.detail', question_id=answer.question.id)) #에러에서는 앵커 필요하지 않음
     if request.method == "POST":
         form = AnswerForm()
         if form.validate_on_submit():
             form.populate_obj(answer)
             answer.modify_date = datetime.now()  # 수정일시 저장
             db.session.commit()
-            return redirect(url_for('question.detail', question_id=answer.question.id))
+            return redirect('{}#answer_{}'.format(
+                url_for('question.detail', question_id=answer.question.id), answer.id)) #앵커 추가
     else:
         form = AnswerForm(obj=answer)
     return render_template('answer/answer_form.html', answer=answer, form=form)
